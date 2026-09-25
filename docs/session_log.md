@@ -10,3 +10,4 @@
 - Jev API key added to `.env` (gitignored, verified not staged). Milestone 1 done.
 - `/init` → rewrote `CLAUDE.md`: standard header, commands, request-flow architecture, `master`
   edit block. venv is Python 3.10.11, deps not yet installed.
+- Scaffold PR #1 merged into `dev`. Next: milestone 2 (Jev smoke test) on `feature/jev-proxy`.
