@@ -1,6 +1,6 @@
 # Spec: Frontend (single page)
 **Version:** 1.0.0 | **Component:** frontend (`static/`) + static serving in `main.py`
-**Status:** Approved, built (PR pending)
+**Status:** Approved, built, PR #3
 
 ## 1. Problem Statement
 The backend (`POST /api/verdict`, PR #2) works, but only through `curl`. The product is a public
