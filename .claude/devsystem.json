@@ -1,0 +1,7 @@
+{
+  "tier": "standard",
+  "redLines": [
+    "Jev API key never reaches the browser (not in HTML, JS, git, or any response header/body)",
+    "Never a paid bill — proxy must hard-stop before free tokens run out"
+  ]
+}
