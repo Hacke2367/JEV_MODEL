@@ -14,4 +14,4 @@ Source: `project_context.md` → "Step-by-step plan to start coding".
 8. **Success check** — live URL, <3s response, 10/10 sane verdicts.
 
 ## Status
-Milestones 1–4 done: scaffold (PR #1), and smoke test + proxy + cap (PR #2). Milestone 5 (frontend) on `feature/frontend`: Spec.
+Milestones 1–4 done: scaffold (PR #1), and smoke test + proxy + cap (PR #2). Milestone 5 (frontend) on `feature/frontend`: Plan written, awaiting build.

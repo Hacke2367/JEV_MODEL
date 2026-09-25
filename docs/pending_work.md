@@ -1,6 +1,6 @@
 # Pending Work
 
-**WIP:** `feature/frontend` (base `dev` @ 4b8ef47). Milestone 5, frontend. Spec next.
+**WIP:** `feature/frontend` (base `dev` @ 4b8ef47). Milestone 5, frontend. Spec + plan written (`docs/specs/05_frontend*.md`).
 
 - [x] Get JEVMODEL_API_KEY, put in `.env` (no card attached)
 - [x] Smoke-test call, confirm `confidence` vs `probabilities` relationship
@@ -12,6 +12,6 @@
 - [ ] Confirm success signal (live URL, <3s, 10/10 sane)
 
 **Next up:**
-1. Owner reviews the spec `docs/specs/05_frontend.md`, then `/plan`
-2. `/plan`, then build `static/` and the `StaticFiles` mount
+1. Build: `static/` files → mount in `main.py` → extend `check_proxy.py` → `CLAUDE.md`
+2. Browser checks via Claude in Chrome (criteria 4–9, 11, 12; about 1.2k tokens)
 3. `/ship`
