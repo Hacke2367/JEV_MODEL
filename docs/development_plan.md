@@ -9,9 +9,12 @@ Source: `project_context.md` → "Step-by-step plan to start coding".
    call Jev (retry 429/502), map choice → label, return `{verdict, confidence}`.
 4. **Cap** — refuse once `X-Tokens-Remaining` < floor or daily request count exceeded.
 5. **Frontend** — `static/index.html` + `app.js` per the UI sketch in project_context.md.
-6. **Test set** — `scenarios.py`, 10 cases (5/mode) against `/api/verdict`, eyeball sanity.
-7. **Deploy** — free Python host, key as host env var, verify key absent from page source/network tab.
-8. **Success check** — live URL, <3s response, 10/10 sane verdicts.
+6. **OpenAI side-by-side** (added 2026-09-26) — an OpenAI model classifies the same input using
+   the same `MODE_CONFIG` roles; confidence from `logprobs`; both verdicts shown side by side;
+   OpenAI calls capped. Needs `OPENAI_API_KEY` in `.env`.
+7. **Test set** — `scenarios.py`, 10 cases (5/mode) against `/api/verdict`, eyeball sanity.
+8. **Deploy** — free Python host, keys as host env vars, verify keys absent from page source/network tab.
+9. **Success check** — live URL, <3s response, 10/10 sane verdicts.
 
 ## Status
-Milestones 1–4 done: scaffold (PR #1), and smoke test + proxy + cap (PR #2). Milestone 5 (frontend) on `feature/frontend`: Plan written, awaiting build.
+Milestones 1–4 done: scaffold (PR #1), and smoke test + proxy + cap (PR #2). Milestone 5 (frontend) built on `feature/frontend`; owner browser checks pending. Milestone 6 (OpenAI) decided, not started.

@@ -47,9 +47,9 @@ The browser never talks to Jev directly. Request flow:
 - **Key:** `JEVMODEL_API_KEY` in `.env` (gitignored). The host sets it as an env var in deploy.
 
 ## Red lines (also in `.claude/devsystem.json`, checked by `/ship`)
-- The Jev key never reaches the browser, in any HTML, JS, or response header or body.
-- Never a paid bill. The free tier is about 100k input tokens, and the cap must stop calls before
-  they run out.
+- No API key (Jev or OpenAI) ever reaches the browser, in any HTML, JS, or response header or body.
+- Never a paid bill beyond prepaid credit. The Jev cap must stop calls before the free tier (about
+  100k input tokens) runs out, and OpenAI calls are capped to stay within the owner's prepaid credits.
 
 ## v1 scope limits
 No accounts, no saved history (not even localStorage), no explanation text, no non-binary answers.

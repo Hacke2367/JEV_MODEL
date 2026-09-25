@@ -55,3 +55,22 @@ Criteria descriptions are more detailed too.
 **Cost:** about 566 input tokens per call, up from 397 (+43%). About 96k tokens are left,
 which is about 170 calls, or about 4 days at `DAILY_LIMIT` 40. Changing `DAILY_LIMIT` is the
 owner's call.
+
+## 2026-09-26: Add an OpenAI classifier, shown side by side with Jev (owner)
+This changes kickoff scope. A "second LLM" had been out of scope, although that entry was
+about explanation text. The owner decided:
+- **Feature:** an OpenAI model classifies the same input, in the same two modes and with the
+  same two labels, and returns a verdict plus a confidence.
+- **UI:** side by side. Every submit calls Jev and OpenAI in parallel and shows both verdicts.
+- **Confidence:** comes from OpenAI `logprobs` on the label token. That is a real probability,
+  comparable to Jev's `probabilities[choice]`. A self-reported number was rejected because
+  it is uncalibrated. This limits the choice to models that return logprobs.
+- **Prompts:** the system prompt is built from the same `MODE_CONFIG` role definitions as the
+  Jev call, so the comparison is fair.
+- **Budget:** the owner supplies an OpenAI key with credits. The $0 constraint is relaxed for
+  OpenAI only. Jev stays free-tier.
+- **Red line:** "never a paid bill" becomes "never spend beyond the Jev free tier or the
+  owner's prepaid OpenAI credits". The proxy caps OpenAI calls the same way it caps Jev.
+  The owner should keep auto-recharge off in the OpenAI billing settings.
+- **Sequencing:** ship the frontend (milestone 5) first. OpenAI becomes the new milestone 6,
+  and the later milestones move down by one.
