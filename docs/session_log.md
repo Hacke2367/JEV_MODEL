@@ -25,3 +25,4 @@
   in `main.py`, and extended `check_proxy.py`. Gate OK.
 - The Claude in Chrome extension was not connected (no browsers listed), so the owner chose to run
   the browser checks by hand. The server is running on :8000.
+- Owner reported that the milestone 5 browser checks pass. Shipping `feature/frontend`.

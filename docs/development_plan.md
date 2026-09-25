@@ -17,4 +17,4 @@ Source: `project_context.md` → "Step-by-step plan to start coding".
 9. **Success check** — live URL, <3s response, 10/10 sane verdicts.
 
 ## Status
-Milestones 1–4 done: scaffold (PR #1), and smoke test + proxy + cap (PR #2). Milestone 5 (frontend) built on `feature/frontend`; owner browser checks pending. Milestone 6 (OpenAI) decided, not started.
+Milestones 1–4 done: scaffold (PR #1), and smoke test + proxy + cap (PR #2). Milestone 5 (frontend): Review (PR into `dev`); owner's browser checks passed. Milestone 6 (OpenAI) decided, not started.

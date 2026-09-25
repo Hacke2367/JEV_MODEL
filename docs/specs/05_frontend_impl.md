@@ -1,5 +1,5 @@
 # Plan: Frontend (single page)
-**Spec:** `05_frontend.md` | **Status:** Ready for Build
+**Spec:** `05_frontend.md` | **Status:** Built, in review
 
 ## 1. Files
 | Action | File | Reason |
@@ -243,13 +243,13 @@ ready when it runs.
   a renamed ID early.
 
 ## 9. Hard Boundaries
-- [ ] Nothing in `static/` contains `sk-`, an absolute `http://` or `https://` URL, `innerHTML`,
+- [x] Nothing in `static/` contains `sk-`, an absolute `http://` or `https://` URL, `innerHTML`,
       `outerHTML`, `insertAdjacentHTML`, `localStorage`, or `sessionStorage`.
-- [ ] `app.js` makes no request except `POST` to `API_PATH`.
-- [ ] No external script, stylesheet or font. Everything is served from `static/`.
-- [ ] The mount stays the last route registration in `main.py`, after `@app.post("/api/verdict")`.
-- [ ] No change to the `/api/verdict` handler, the cap, or the error body contract.
-- [ ] The verdict is never shown by colour alone.
+- [x] `app.js` makes no request except `POST` to `API_PATH`.
+- [x] No external script, stylesheet or font. Everything is served from `static/`.
+- [x] The mount stays the last route registration in `main.py`, after `@app.post("/api/verdict")`.
+- [x] No change to the `/api/verdict` handler, the cap, or the error body contract.
+- [x] The verdict is never shown by colour alone.
 
 ## 10. Acceptance Criteria (runnable)
 
