@@ -1,6 +1,6 @@
 # Pending Work
 
-**WIP:** none. Milestones 2–4 merged (PR #2).
+**WIP:** `feature/frontend` (base `dev` @ 4b8ef47). Milestone 5, frontend. Spec next.
 
 - [x] Get JEVMODEL_API_KEY, put in `.env` (no card attached)
 - [x] Smoke-test call, confirm `confidence` vs `probabilities` relationship
@@ -12,5 +12,6 @@
 - [ ] Confirm success signal (live URL, <3s, 10/10 sane)
 
 **Next up:**
-1. Milestone 5, frontend (`static/index.html`, `app.js`, CSS, plus the `StaticFiles` mount in `main.py`). Run `/start_work`; no pending H-/P- items.
-2. Milestone 6: `scenarios.py`, 10 live cases
+1. `/spec` for milestone 5 → `docs/specs/05_frontend.md`
+2. `/plan`, then build `static/` and the `StaticFiles` mount
+3. `/ship`
