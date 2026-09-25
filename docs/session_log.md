@@ -26,3 +26,4 @@
 - The Claude in Chrome extension was not connected (no browsers listed), so the owner chose to run
   the browser checks by hand. The server is running on :8000.
 - Owner reported that the milestone 5 browser checks pass. Shipping `feature/frontend`.
+- PR #3 merged into `dev` (frontend, clearer Jev roles, milestone 6 planning). Next: milestone 6.
