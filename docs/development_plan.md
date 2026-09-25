@@ -14,4 +14,4 @@ Source: `project_context.md` → "Step-by-step plan to start coding".
 8. **Success check** — live URL, <3s response, 10/10 sane verdicts.
 
 ## Status
-Milestone 1 done. Scaffold merged (PR #1). Milestone 2+3 in progress on `feature/jev-proxy`: Spec.
+Milestone 1 done. Scaffold merged (PR #1). Milestone 2+3 on `feature/jev-proxy`: Plan written, awaiting build.

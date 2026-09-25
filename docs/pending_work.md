@@ -1,6 +1,6 @@
 # Pending Work
 
-**WIP:** `feature/jev-proxy` (base `dev` @ 3fc3d26) — Milestone 2 (smoke test) + 3 (proxy). Spec next.
+**WIP:** `feature/jev-proxy` (base `dev` @ 3fc3d26) — Milestone 2+3. Spec + plan written (`docs/specs/02_jev_proxy*.md`).
 
 - [x] Get JEVMODEL_API_KEY, put in `.env` (no card attached)
 - [ ] Smoke-test call, confirm `confidence` vs `probabilities` relationship
@@ -12,6 +12,6 @@
 - [ ] Confirm success signal (live URL, <3s, 10/10 sane)
 
 **Next up:**
-1. `/spec` for milestone 2+3 → `docs/specs/02_jev_proxy.md`
-2. Smoke test the Jev API
-3. Build `main.py`
+1. `pip install -r requirements.txt`, then build `smoke_test.py` and run it (D6 gate in the plan)
+2. Build `main.py`, then `check_proxy.py`
+3. `/ship`
