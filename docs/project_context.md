@@ -22,15 +22,17 @@ v1 is a public web page. The user picks a mode, types a short scenario and a que
 - A verdict and a confidence % taken from Jev's probabilities.
 - A server-side proxy that holds the API key, plus a usage cap.
 - A public deployment on a free host.
+- An OpenAI model that classifies the same input side by side with Jev, with confidence
+  taken from logprobs (milestone 6; added 2026-09-26, see `decision.md`).
 
 **Out of scope (v1):**
 - User accounts or login.
 - Saved history of any kind, including localStorage.
-- Explanation text ("why"). Jev returns only labels and probabilities, and adding a second LLM is out.
+- Explanation text ("why"). Jev returns only labels and probabilities, and no LLM is added for explanations.
 - Non-binary answers: no "maybe", no multi-option, no 1–10 scores.
 
 ## Constraints
-- **Money: $0.** Free tier only (100,000 input tokens ≈ 500 calls). The proxy enforces a cap and
+- **Money: $0 for Jev; OpenAI uses the owner's prepaid credits** (added 2026-09-26). Jev: free tier only (100,000 input tokens, about 170 calls at about 566 tokens each). The proxy enforces a cap and
   shows a friendly "out of juice" message once it's hit.
 - **Stack:** a Python backend (FastAPI) serves the proxy and the static HTML/JS. The owner is
   comfortable in Python, and a venv already exists.
@@ -56,9 +58,10 @@ All of the following:
 - **10 hand-picked test scenarios** (5 per mode) all get sensible verdicts.
 
 ## Red lines
-- **The API key never reaches the browser.** It must not appear in HTML, JS, git, or any response
+- **No API key ever reaches the browser** (Jev or OpenAI). Keys must not appear in HTML, JS, git, or any response
   body or header sent to the client. It lives only in a server environment variable.
-- **Never a paid bill.** No card is attached to the Jev account, and the proxy stops before the
+- **Never a paid bill beyond prepaid credit.** Jev: no card attached. OpenAI: only the owner's prepaid
+  credits, with auto-recharge off. The proxy caps both. For Jev, it stops before the
   free tokens run out.
 
 ## Known risk (accepted, not a red line)

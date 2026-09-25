@@ -3,6 +3,7 @@ import asyncio
 import logging
 import os
 from datetime import date, datetime, timezone
+from pathlib import Path
 from typing import Annotated, Literal
 
 import httpx
@@ -10,6 +11,7 @@ from dotenv import load_dotenv
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, StringConstraints
 
 load_dotenv()
@@ -28,22 +30,45 @@ MISCONFIGURED = "Server misconfiguration"
 
 log = logging.getLogger("decision_game")
 
+# Role definitions sent to Jev as `instructions` + `criteria`. Jev limits: instructions <= 1,800
+# chars, criteria <= 2,000. Every extra word is billed as input tokens on every call.
 MODE_CONFIG = {
     "advisor": {
-        "instructions": "The user describes a situation and asks whether to do something. "
-                        "Decide if doing it is the better choice.",
+        "instructions": (
+            "Role: Advisor. You help one person decide whether to take an action they are considering. "
+            "The state has a `scenario` (their situation, in their own words) and a `question` (the action, "
+            "usually phrased 'Should I ...?'). Decide whether taking that action is the better choice for "
+            "this person, judged by their own goals and circumstances as described. Weigh the concrete "
+            "benefits against the realistic risks and costs. Actions that are easy to undo need less "
+            "certainty; actions with severe, lasting or irreversible downsides need more. Count harm to "
+            "other people as a cost. Use only what the scenario says; where it is thin, decide as a "
+            "sensible, well-informed friend would."
+        ),
         "criteria": {
-            "go_for_it": "Doing it is the better decision given the scenario.",
-            "not_go_for_it": "Not doing it is the better decision given the scenario.",
+            "go_for_it": "Taking the action is the better choice: its likely benefits for this person "
+                         "outweigh its realistic risks and costs, or the downside is small or reversible.",
+            "not_go_for_it": "Not taking the action (or waiting) is the better choice: its realistic risks, "
+                             "costs or harm to them or others outweigh the likely benefits, or the downside "
+                             "would be severe or hard to undo.",
         },
         "labels": {"go_for_it": "Go for it", "not_go_for_it": "Not go for it"},
     },
     "judge": {
-        "instructions": "The user describes a situation and states their position. "
-                        "Decide if their position is correct.",
+        "instructions": (
+            "Role: Judge. You are a neutral arbiter ruling on one person's position in a situation or "
+            "disagreement. The state has a `scenario` (what happened, told by that person) and a "
+            "`question` (their position, usually phrased 'Am I right that ...?'). Rule on that specific "
+            "position, not on who is the nicer person overall. Hear both sides: consider how the other "
+            "party would describe the same facts. Judge by the facts given, basic fairness, common social "
+            "norms and any agreement or obligation described. The teller wrote the scenario, so discount "
+            "one-sided wording and loaded adjectives and focus on what actually happened."
+        ),
         "criteria": {
-            "you_are_right": "The user's position is correct given the scenario.",
-            "you_are_wrong": "The user's position is incorrect given the scenario.",
+            "you_are_right": "The stated position is correct or fair: the facts and reasonable norms support "
+                             "it, and a neutral person who heard both sides would agree with the teller.",
+            "you_are_wrong": "The stated position is incorrect or unfair: the facts or reasonable norms point "
+                             "the other way, or the teller is overlooking something a neutral person who "
+                             "heard both sides would hold against them.",
         },
         "labels": {"you_are_right": "You are right", "you_are_wrong": "You are wrong"},
     },
@@ -161,3 +186,8 @@ async def verdict(req: VerdictRequest) -> VerdictResponse:
         raise HTTPException(502, "Unexpected response from Jev")
     label, confidence = _parse_jev_response(body, req.mode)
     return VerdictResponse(verdict=label, confidence=confidence)
+
+
+# Must stay the last registration: a mount at "/" matches every path, so any route added
+# after it is unreachable.
+app.mount("/", StaticFiles(directory=Path(__file__).resolve().parent / "static", html=True), name="static")

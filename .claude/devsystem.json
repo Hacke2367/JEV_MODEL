@@ -4,7 +4,7 @@
     "commands": ["venv/Scripts/python check_proxy.py"]
   },
   "redLines": [
-    "Jev API key never reaches the browser (not in HTML, JS, git, or any response header/body)",
-    "Never a paid bill — proxy must hard-stop before free tokens run out"
+    "No API key (Jev or OpenAI) ever reaches the browser (not in HTML, JS, git, or any response header/body)",
+    "Never a paid bill beyond prepaid credit — proxy must hard-stop before Jev free tokens run out, and cap OpenAI calls so spend stays within the owner's prepaid credits"
   ]
 }
