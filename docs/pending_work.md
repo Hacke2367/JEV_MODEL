@@ -12,6 +12,6 @@
 - [ ] Confirm success signal (live URL, <3s, 10/10 sane)
 
 **Next up:**
-1. `/spec` for milestone 5 → `docs/specs/05_frontend.md`
+1. Owner reviews the spec `docs/specs/05_frontend.md`, then `/plan`
 2. `/plan`, then build `static/` and the `StaticFiles` mount
 3. `/ship`
