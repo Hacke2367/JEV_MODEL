@@ -14,4 +14,4 @@ Source: `project_context.md` → "Step-by-step plan to start coding".
 8. **Success check** — live URL, <3s response, 10/10 sane verdicts.
 
 ## Status
-Not started. Next: Milestone 1 (get the key).
+Milestone 1 done (key in `.env`). Next: Milestone 2 (smoke test).

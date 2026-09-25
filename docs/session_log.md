@@ -7,3 +7,6 @@
 - `/scaffold` → flat layout (Option A), tier `standard`. Created `.claude/devsystem.json`,
   `CLAUDE.md`, `.gitignore`, `.env.example`, `requirements.txt`, docs/ tree. `git init`,
   branch `chore/scaffold-project`.
+- Jev API key added to `.env` (gitignored, verified not staged). Milestone 1 done.
+- `/init` → rewrote `CLAUDE.md`: standard header, commands, request-flow architecture, `master`
+  edit block. venv is Python 3.10.11, deps not yet installed.

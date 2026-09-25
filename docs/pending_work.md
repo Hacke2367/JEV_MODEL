@@ -1,6 +1,6 @@
 # Pending Work
 
-- [ ] Get JEVMODEL_API_KEY, put in `.env` (no card attached)
+- [x] Get JEVMODEL_API_KEY, put in `.env` (no card attached)
 - [ ] Smoke-test call, confirm `confidence` vs `probabilities` relationship
 - [ ] Build `/api/verdict` proxy (main.py)
 - [ ] Token/request cap
