@@ -37,3 +37,21 @@ decision (D3 in `specs/02_jev_proxy_impl.md`). It cannot produce a bill: jevmode
 prepaid tokens, no card is attached, and when the tokens run out Jev returns a 402, which the
 proxy turns into "out of juice". Revisit if the host restarts often, for example a free tier
 that sleeps when idle.
+
+## 2026-09-26: Clearer role definitions for Jev (owner asked, Claude wrote them)
+The owner asked for stronger instructions so Jev classifies properly. `MODE_CONFIG` in `main.py`
+now defines each role explicitly:
+- **Advisor:** weighs benefits against realistic risks, treats reversibility as a factor, and
+  counts harm to others as a cost.
+- **Judge:** a neutral arbiter who hears both sides and discounts the teller's one-sided wording.
+
+Criteria descriptions are more detailed too.
+
+**Live check** (3 calls):
+- Job offer → "Not go for it" at 0.58. A close case, so low confidence fits.
+- 50/50 rent while taking the bigger room → "You are wrong" at 0.99.
+- Asking a friend to repay an overdue loan → "You are right" at 1.0.
+
+**Cost:** about 566 input tokens per call, up from 397 (+43%). About 96k tokens are left,
+which is about 170 calls, or about 4 days at `DAILY_LIMIT` 40. Changing `DAILY_LIMIT` is the
+owner's call.
