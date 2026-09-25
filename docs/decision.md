@@ -11,3 +11,10 @@
 
 ## 2026-09-25: Jev `choice` over `noul` (Claude)
 `choice` limits the output to our 2 labels and returns probabilities for both, so the label and the confidence % need no extra mapping. `noul` stays as the fallback.
+
+## 2026-09-26: Bootstrap onto existing GitHub repo (owner)
+Owner supplied an existing public repo (`Hacke2367/JEV_MODEL`, `main` with only a LICENSE commit).
+Rebased the local scaffold commits onto its `main`, created `dev` from `main`, pushed `dev`.
+Scaffold branch now ships as a normal PR into `dev` instead of a local-only bootstrap.
+Verified before pushing: the real Jev API key is not in git history or any tracked file
+(only the `sk-...` placeholder appears, in `.env.example` and docs).

@@ -14,4 +14,4 @@ Source: `project_context.md` → "Step-by-step plan to start coding".
 8. **Success check** — live URL, <3s response, 10/10 sane verdicts.
 
 ## Status
-Milestone 1 done (key in `.env`). Next: Milestone 2 (smoke test).
+Milestone 1 done (key in `.env`). Scaffold shipped for review (this PR). Next: Milestone 2 (smoke test), on `feature/jev-proxy`.
