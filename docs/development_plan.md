@@ -14,4 +14,4 @@ Source: `project_context.md` → "Step-by-step plan to start coding".
 8. **Success check** — live URL, <3s response, 10/10 sane verdicts.
 
 ## Status
-Milestones 1–4 built on `feature/jev-proxy`: smoke test, proxy, cap. Status: Review, PR #2 (https://github.com/Hacke2367/JEV_MODEL/pull/2). Next: milestone 5 (frontend).
+Milestones 1–4 done: scaffold (PR #1), and smoke test + proxy + cap (PR #2). Next: milestone 5 (frontend, `static/`).

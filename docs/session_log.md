@@ -20,3 +20,4 @@
   now the gate).
 - Live results: Advisor answered in 2.0s. Judge answered "You are wrong" at 0.98. Invalid input
   returns 400. The key appears 0 times in the source and in responses.
+- PR #2 merged into `dev` (proxy, cap, offline check). Next: milestone 5, frontend.
