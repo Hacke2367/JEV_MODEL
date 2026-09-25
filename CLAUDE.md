@@ -12,16 +12,19 @@ reseller of TypeSafe AI's Jev). It has two modes:
 - Milestones and current status: `docs/development_plan.md`
 - Decisions: `docs/decision.md`
 
-**Status:** docs and scaffold only. `main.py`, `static/`, and `scenarios.py` are not written yet.
+**Status:** backend proxy (`main.py`) built. `static/` and `scenarios.py` are not written yet.
 
 ## Commands (Windows, Python 3.10 venv)
 ```
 venv\Scripts\activate
 pip install -r requirements.txt
-uvicorn main:app --reload --env-file .env    # needs main.py (milestone 3)
-python scenarios.py                          # 10-case sanity run (milestone 6); needs server running
+uvicorn main:app --reload                    # main.py loads .env itself
+python check_proxy.py                        # offline check, Jev mocked; this is the /ship gate
+python smoke_test.py                         # one REAL Jev call (~400 tokens): prints the raw response
+python scenarios.py                          # 10-case live sanity run (milestone 6); needs server running
 ```
-There is no test framework and no linter. `scenarios.py` is the only check.
+There is no test framework and no linter. `check_proxy.py` is plain asserts with a single entry
+point, so run the whole file; there is no way to run one case alone.
 
 ## Architecture
 The browser never talks to Jev directly. Request flow:

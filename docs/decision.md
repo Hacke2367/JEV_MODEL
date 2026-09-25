@@ -18,3 +18,14 @@ Rebased the local scaffold commits onto its `main`, created `dev` from `main`, p
 Scaffold branch now ships as a normal PR into `dev` instead of a local-only bootstrap.
 Verified before pushing: the real Jev API key is not in git history or any tracked file
 (only the `sk-...` placeholder appears, in `.env.example` and docs).
+
+## 2026-09-26: Confidence comes from `probabilities[choice]`, confirmed by the smoke test (Claude)
+The smoke test returned `confidence` 0.58 with `probabilities` 0.79 / 0.21, so `confidence` looks
+like the top-two margin rather than how sure Jev is of its answer. `main.py` returns
+`probabilities[choice]` as the confidence %. Recorded as D6 in `specs/02_jev_proxy_impl.md`.
+
+## 2026-09-26: Free tier is about 250 calls, not 500. Cap defaults unchanged (owner's call)
+One call cost 397 input tokens, against the ~200 that jevmodel.org implies. That makes 100k
+free tokens about 250 calls. At `DAILY_LIMIT` 40 (about 16k tokens a day) the free tier lasts
+about 6 days, and `TOKEN_FLOOR` 5000 still stops calls before the balance reaches 0, so the
+"never a paid bill" red line holds. If more runway is wanted, lower `DAILY_LIMIT` in `main.py`.
