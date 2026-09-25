@@ -14,4 +14,4 @@ Source: `project_context.md` → "Step-by-step plan to start coding".
 8. **Success check** — live URL, <3s response, 10/10 sane verdicts.
 
 ## Status
-Milestone 1 done. Scaffold merged (PR #1). Next: Milestone 2 (smoke test), on `feature/jev-proxy`.
+Milestones 1–4 done: scaffold (PR #1), and smoke test + proxy + cap (PR #2). Next: milestone 5 (frontend, `static/`).

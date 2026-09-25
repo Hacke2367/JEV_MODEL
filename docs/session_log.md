@@ -11,3 +11,13 @@
 - `/init` → rewrote `CLAUDE.md`: standard header, commands, request-flow architecture, `master`
   edit block. venv is Python 3.10.11, deps not yet installed.
 - Scaffold PR #1 merged into `dev`. Next: milestone 2 (Jev smoke test) on `feature/jev-proxy`.
+
+## 2026-09-26
+- Spec and plan written for milestones 2+3 (`docs/specs/02_jev_proxy*.md`).
+- Smoke test result: `confidence` is not `probabilities[choice]`, and one call costs 397 tokens
+  (so the free tier is about 250 calls).
+- Built `main.py` (the `/api/verdict` proxy and the cap) and `check_proxy.py` (offline, 15 cases,
+  now the gate).
+- Live results: Advisor answered in 2.0s. Judge answered "You are wrong" at 0.98. Invalid input
+  returns 400. The key appears 0 times in the source and in responses.
+- PR #2 merged into `dev` (proxy, cap, offline check). Next: milestone 5, frontend.

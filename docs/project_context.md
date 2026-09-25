@@ -133,7 +133,7 @@ docs are at `https://docs.typesafe.ai/`.
 }
 ```
 The response header `X-Tokens-Remaining` gives the token balance, and we use it for the cap.
-UNVERIFIED: how `confidence` relates to `probabilities[choice]`. Confirm in the step-2 smoke test.
+Confirmed by the smoke test (2026-09-26): `confidence` is NOT `probabilities[choice]`. One call returned `confidence` 0.58 with probabilities 0.79 / 0.21, so `confidence` looks like the top-two margin. The UI uses `probabilities[choice]`. The response `model` field is the resolved version (e.g. `jev-1.13.0`). One call cost 397 input tokens, so the free tier is about 250 calls, not 500.
 
 **Errors:** the body is `{"error":{"type":"...","message":"..."}}`.
 
