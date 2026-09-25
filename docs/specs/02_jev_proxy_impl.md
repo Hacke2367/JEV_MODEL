@@ -1,5 +1,5 @@
 # Plan: Jev Smoke Test + Verdict Proxy
-**Spec:** `02_jev_proxy.md` | **Status:** Ready for Build
+**Spec:** `02_jev_proxy.md` | **Status:** Built, in review
 
 ## 1. Files
 | Action | File | Reason |
@@ -267,15 +267,15 @@ and `unittest.mock`.
 - `venv` has no packages installed yet, so run `pip install -r requirements.txt` first.
 
 ## 9. Hard Boundaries
-- [ ] The API key never appears in any response body, response header or log line. Only the
+- [x] The API key never appears in any response body, response header or log line. Only the
       `Authorization` header sent to Jev carries it.
-- [ ] Never log the user's scenario or question text. Log lines name only the Jev status.
-- [ ] No `static/` mount (D4).
-- [ ] `_call_jev()` is never reached before `_check_cap()` passes.
-- [ ] At most one retry.
-- [ ] A Jev error body is never forwarded to the client. The client gets only a generic message.
-- [ ] `check_proxy.py` never hits the network and never reads `.env`.
-- [ ] `smoke_test.py` never writes its output to a file.
+- [x] Never log the user's scenario or question text. Log lines name only the Jev status.
+- [x] No `static/` mount (D4).
+- [x] `_call_jev()` is never reached before `_check_cap()` passes.
+- [x] At most one retry.
+- [x] A Jev error body is never forwarded to the client. The client gets only a generic message.
+- [x] `check_proxy.py` never hits the network and never uses the real key. It does read `.env`, because `import main` calls `load_dotenv()`, but the dummy key is set first and `load_dotenv` does not override existing variables.
+- [x] `smoke_test.py` never writes its output to a file.
 
 ## 10. Acceptance Criteria (runnable)
 

@@ -14,4 +14,4 @@ Source: `project_context.md` → "Step-by-step plan to start coding".
 8. **Success check** — live URL, <3s response, 10/10 sane verdicts.
 
 ## Status
-Milestones 1–4 done (2+3+4 on `feature/jev-proxy`: smoke test, proxy, cap). Next: ship it, then milestone 5 (frontend).
+Milestones 1–4 built on `feature/jev-proxy`: smoke test, proxy, cap. Status: Review (PR into `dev`). Next: milestone 5 (frontend).

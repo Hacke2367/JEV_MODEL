@@ -1,6 +1,6 @@
 # Spec: Jev Smoke Test + Verdict Proxy
 **Version:** 1.0.0 | **Component:** backend (main.py)
-**Status:** Ready for Review
+**Status:** Approved, built (PR pending)
 
 ## 1. Problem Statement
 The browser must never hold the Jev API key (red line, `.claude/devsystem.json`). Before any

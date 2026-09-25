@@ -1,6 +1,6 @@
 # Pending Work
 
-**WIP:** `feature/jev-proxy` (base `dev` @ 3fc3d26). Milestones 2+3 built. Offline check and live acceptance pass. Ready to `/ship`.
+**WIP:** `feature/jev-proxy` (base `dev` @ 3fc3d26). Milestones 2–4 in review: gate green, live acceptance passed.
 
 - [x] Get JEVMODEL_API_KEY, put in `.env` (no card attached)
 - [x] Smoke-test call, confirm `confidence` vs `probabilities` relationship
@@ -12,5 +12,5 @@
 - [ ] Confirm success signal (live URL, <3s, 10/10 sane)
 
 **Next up:**
-1. `/ship` feature/jev-proxy → PR into `dev`
+1. Owner reviews and merges the PR (`/merge_pr`)
 2. `/start_work` milestone 5 (frontend, `static/`)

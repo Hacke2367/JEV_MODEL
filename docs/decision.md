@@ -29,3 +29,11 @@ One call cost 397 input tokens, against the ~200 that jevmodel.org implies. That
 free tokens about 250 calls. At `DAILY_LIMIT` 40 (about 16k tokens a day) the free tier lasts
 about 6 days, and `TOKEN_FLOOR` 5000 still stops calls before the balance reaches 0, so the
 "never a paid bill" red line holds. If more runway is wanted, lower `DAILY_LIMIT` in `main.py`.
+
+## 2026-09-26: Accepted residual risk: a restart resets the in-memory cap (Claude)
+After a restart, `DAILY_LIMIT` counts from 0 again, and the first call runs before
+`TOKEN_FLOOR` has a balance to check. This was accepted as part of the in-memory cap
+decision (D3 in `specs/02_jev_proxy_impl.md`). It cannot produce a bill: jevmodel only sells
+prepaid tokens, no card is attached, and when the tokens run out Jev returns a 402, which the
+proxy turns into "out of juice". Revisit if the host restarts often, for example a free tier
+that sleeps when idle.
