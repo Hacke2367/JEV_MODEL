@@ -94,4 +94,17 @@ r, post = call(ADVISOR, [jev(200, OK_BODY)])
 assert post.call_args.kwargs["headers"]["Authorization"] == f"Bearer {DUMMY_KEY}"
 assert DUMMY_KEY not in r.text
 
+# Static page served at "/" by the mount, and the mount doesn't shadow the API (every POST above passed).
+r = client.get("/")
+assert r.status_code == 200 and r.headers["content-type"].startswith("text/html"), r.status_code
+for marker in ('id="scenario"', 'id="question"', 'name="mode"', 'id="result"', "Get verdict"):
+    assert marker in r.text, marker
+for asset in ("/app.js", "/style.css"):
+    assert client.get(asset).status_code == 200, asset
+
+# Red line: no key and no external URL anywhere in static/.
+for f in (main.Path(main.__file__).resolve().parent / "static").iterdir():
+    text = f.read_text(encoding="utf-8")
+    assert "sk-" not in text and "http://" not in text and "https://" not in text, f.name
+
 print("OK")

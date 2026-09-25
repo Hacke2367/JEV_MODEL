@@ -3,6 +3,7 @@ import asyncio
 import logging
 import os
 from datetime import date, datetime, timezone
+from pathlib import Path
 from typing import Annotated, Literal
 
 import httpx
@@ -10,6 +11,7 @@ from dotenv import load_dotenv
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, StringConstraints
 
 load_dotenv()
@@ -161,3 +163,8 @@ async def verdict(req: VerdictRequest) -> VerdictResponse:
         raise HTTPException(502, "Unexpected response from Jev")
     label, confidence = _parse_jev_response(body, req.mode)
     return VerdictResponse(verdict=label, confidence=confidence)
+
+
+# Must stay the last registration: a mount at "/" matches every path, so any route added
+# after it is unreachable.
+app.mount("/", StaticFiles(directory=Path(__file__).resolve().parent / "static", html=True), name="static")

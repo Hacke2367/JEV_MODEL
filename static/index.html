@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Decision Game</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <main>
+    <h1>Decision Game</h1>
+    <form id="verdict-form">
+      <fieldset id="controls">
+        <fieldset class="modes">
+          <legend>Mode</legend>
+          <label class="mode"><input type="radio" name="mode" value="advisor" checked><span>Advisor</span></label>
+          <label class="mode"><input type="radio" name="mode" value="judge"><span>Judge</span></label>
+        </fieldset>
+
+        <label for="scenario">Scenario</label>
+        <textarea id="scenario" name="scenario" rows="5" maxlength="1500" required></textarea>
+
+        <label for="question" id="question-label">Your question</label>
+        <input type="text" id="question" name="question" maxlength="300" required>
+
+        <button type="submit" id="submit">Get verdict</button>
+      </fieldset>
+    </form>
+    <section id="result" aria-live="polite"></section>
+  </main>
+  <footer>For fun — not advice.</footer>
+</body>
+</html>
